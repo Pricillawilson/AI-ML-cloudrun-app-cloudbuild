@@ -1,11 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'europe-west2-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'europe-west1-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'europe-west2-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA']
+  args: ['push', 'europe-west1-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA']
 
-- name: 'europe-west2-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA'
+- name: 'europe-west1-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA'
   entrypoint: 'bash'
   args:
    - '-c'
@@ -19,12 +19,12 @@ steps:
    - 'deploy'
    - 'py-bq-load'
    - '--image'
-   - 'europe-west2-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA'
+   - 'europe-west1-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA'
    - '--region'
-   - 'europe-west2'
+   - 'europe-west1'
    - '--allow-unauthenticated'
 images:
-- 'europe-west2-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA'
+- 'europe-west1-docker.pkg.dev/ml-project-161098/demo-flask-app:$COMMIT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY

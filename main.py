@@ -18,6 +18,7 @@ def main():
         source_format=bigquery.SourceFormat.CSV,
         skip_leading_rows=1,
     )
+
     uri = "gs://ml-ops-dataset/us-states.csv"
     load_job = big_query_client.load_table_from_uri(
         uri, table_id, job_config=job_config
